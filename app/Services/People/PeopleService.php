@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class PeopleService implements IPeopleService
 {
-    public function index(): array
+    public function index()
     {
         return People::all();
     }
@@ -54,7 +54,11 @@ class PeopleService implements IPeopleService
 
     public function destroy(string $id)
     {
-        return People::destroy($id);
+        $people =  People::destroy($id);
+        if (empty($people)){
+            return ['No record found'];
+        }
+        return ['Successfully deleted'];
     }
 
 }

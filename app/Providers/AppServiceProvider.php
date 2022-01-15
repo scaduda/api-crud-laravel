@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\People\Interfaces\IPeopleService;
 use App\Services\People\PeopleService;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Este método deixa de aninhar o conteúdo dos recursos
+        // em uma chave 'data' em todo JsonResource
+        JsonResource::withoutWrapping();
     }
 }

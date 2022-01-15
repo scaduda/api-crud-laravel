@@ -6,7 +6,7 @@ use App\Models\People;
 
 interface IPeopleService
 {
-    public function index(): array;
+    public function index();
 
     public function show(string $id): People;
 
