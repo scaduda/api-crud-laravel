@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\People;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 
-class StorePeopleRequest extends FormRequest
+class UpdatePeopleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,8 @@ class StorePeopleRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required|string|max:255',
-           'cpf' => 'required|string|max:14'
+           'name' => 'nullable|string|max:255',
+           'cpf' => 'nullable|string|max:14'
         ];
     }
 

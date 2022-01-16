@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\StorePeopleRequest;
-use App\Http\Requests\UpdatePeopleRequest;
+use App\Http\Requests\People\StorePeopleRequest;
+use App\Http\Requests\People\UpdatePeopleRequest;
 use App\Http\Resources\PeopleResource;
 use App\Services\People\Interfaces\IPeopleService;
 use Exception;
@@ -37,7 +37,6 @@ class PeopleController extends Controller
         } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }
-
     }
 
     public function store(StorePeopleRequest $request)
@@ -62,7 +61,6 @@ class PeopleController extends Controller
         } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }
-
     }
 
     public function destroy(string $id)
