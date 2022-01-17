@@ -27,8 +27,36 @@ class StorePeopleRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required|string|max:255',
-           'cpf' => 'required|string|max:14'
+            'name' => 'required|string|max:255',
+            'cpf' => 'required|string|max:14',
+            'email' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15'
+        ];
+    }
+
+    public function bodyParams()
+    {
+        return [
+            'name' => [
+                'description' => 'Name',
+                'example' => 'Raphael Goettenauer'
+            ],
+            'cpf' => [
+                'description' => 'CPF',
+                'example' => '000.000.000-00'
+            ],
+            'people_id' => [
+                'description' => 'Id of people',
+                'example' => 'a9cd6d61-0d3a-49e1-b660-92ae62308eff'
+            ],
+            'email' => [
+                'description' => 'Email',
+                'example' => 'example@example.com'
+            ],
+            'phone_number' => [
+                'description' => 'Phone number',
+                'example' => '(79) 99999-9999'
+            ]
         ];
     }
 

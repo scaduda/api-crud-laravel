@@ -33,6 +33,7 @@ class StoreContactRequest extends FormRequest
         ];
     }
 
+
     /**
      * Retorna os erros encontrados
      *

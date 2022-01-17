@@ -2,6 +2,7 @@
 
 namespace App\Services\People;
 
+use App\Models\Contact;
 use App\Models\People;
 use App\Services\People\Interfaces\IPeopleService;
 use Exception;
@@ -11,12 +12,16 @@ class PeopleService implements IPeopleService
 {
     public function index()
     {
-        return People::all();
+        return People::query()
+            ->with('contact')
+            ->orderByDesc('updated_at')
+            ->get();
     }
 
     public function show(string $id): People
     {
-        return People::findOrFail($id);
+        return People::findOrFail($id)
+            ->with('contato');
     }
 
     /**
@@ -27,6 +32,11 @@ class PeopleService implements IPeopleService
         DB::beginTransaction();
         try {
             $created_people = People::create($people);
+            Contact::create([
+                'people_id' => $created_people->id,
+                'email' => $people['email'],
+                'phone_number' => $people['phone_number']
+            ]);
             DB::commit();
             return $created_people;
         } catch (Exception $e) {
@@ -54,8 +64,8 @@ class PeopleService implements IPeopleService
 
     public function destroy(string $id)
     {
-        $people =  People::destroy($id);
-        if (empty($people)){
+        $people = People::destroy($id);
+        if (empty($people)) {
             return ['No record found'];
         }
         return ['Successfully deleted'];

@@ -24,4 +24,9 @@ class Contact extends Model
         'email',
         'phone_number'
     ];
+
+    public function people()
+    {
+        return $this->hasOne(People::class, 'id', 'people_id');
+    }
 }
