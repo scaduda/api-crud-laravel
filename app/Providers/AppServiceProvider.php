@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Contact\ContactService;
+use App\Services\Contact\Interfaces\IContactService;
 use App\Services\People\Interfaces\IPeopleService;
 use App\Services\People\PeopleService;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             IPeopleService::class,
             PeopleService::class
+        );
+
+        $this->app->bind(
+            IContactService::class,
+            ContactService::class
         );
     }
 

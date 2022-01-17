@@ -20,6 +20,12 @@ class People extends Model
     protected $visible = [
         'id',
         'name',
-        'cpf'
+        'cpf',
+        'contact'
     ];
+
+    public function contact()
+    {
+      return $this->hasMany(Contact::class);
+    }
 }

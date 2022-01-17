@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Contact;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 
-class UpdatePeopleRequest extends FormRequest
+class UpdateContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,8 @@ class UpdatePeopleRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'nullable|string|max:255',
-           'cpf' => 'nullable|string|max:14'
+           'email' => 'nullable|string|max:255',
+           'phone_number' => 'nullable|string|max:15'
         ];
     }
 
