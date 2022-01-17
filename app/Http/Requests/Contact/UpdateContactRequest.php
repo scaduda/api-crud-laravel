@@ -27,7 +27,6 @@ class UpdateContactRequest extends FormRequest
     public function rules()
     {
         return [
-           'people_id' => 'required|string|max:255',
            'email' => 'nullable|string|max:255',
            'phone_number' => 'nullable|string|max:15'
         ];
