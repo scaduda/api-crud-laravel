@@ -7,9 +7,21 @@ use App\Models\People;
 class PeopleObserver
 {
     /**
+     * Handle the People "creating" event.
+     *
+     * @param \App\Models\People $people
+     * @return void
+     */
+    public function creating(People $people)
+    {
+        $people->cpf = str_replace('.', '', $people->cpf);
+        $people->cpf = str_replace('-', '', $people->cpf);
+    }
+
+    /**
      * Handle the People "created" event.
      *
-     * @param  \App\Models\People  $people
+     * @param \App\Models\People $people
      * @return void
      */
     public function created(People $people)
@@ -20,7 +32,7 @@ class PeopleObserver
     /**
      * Handle the People "updated" event.
      *
-     * @param  \App\Models\People  $people
+     * @param \App\Models\People $people
      * @return void
      */
     public function updated(People $people)
@@ -31,9 +43,10 @@ class PeopleObserver
     /**
      * Handle the People "deleted" event.
      *
-     * @param  \App\Models\People  $people
+     * @param \App\Models\People $people
      * @return void
      */
+
     public function deleted(People $people)
     {
         //
@@ -42,9 +55,10 @@ class PeopleObserver
     /**
      * Handle the People "restored" event.
      *
-     * @param  \App\Models\People  $people
+     * @param \App\Models\People $people
      * @return void
      */
+
     public function restored(People $people)
     {
         //
@@ -53,9 +67,10 @@ class PeopleObserver
     /**
      * Handle the People "force deleted" event.
      *
-     * @param  \App\Models\People  $people
+     * @param \App\Models\People $people
      * @return void
      */
+
     public function forceDeleted(People $people)
     {
         //
